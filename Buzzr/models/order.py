@@ -10,7 +10,7 @@ class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.DO_NOTHING)
     merchant = models.ForeignKey(Merchant, on_delete=models.DO_NOTHING)
     start_datetime = models.DateTimeField()
-    end_datetime = models.DateTimeField()
+    end_datetime = models.DateTimeField(blank=True,null=True)
     points = models.IntegerField()
     
     WAIT = "Waiting"

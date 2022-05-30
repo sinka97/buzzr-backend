@@ -1,8 +1,12 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from ..models.order import Order
+from datetime import datetime as dt
 
 
 def test_webpage(request):
-    latest_question_list = ["Is this working?", "Are we working?", "Should we rethink us?"]
-    context = {'latest_question_list': latest_question_list}
+    q = request.GET.get('q', '')
+    Order(id=q, status=Order.WAIT, start_datetime=dt.now(), points=100).save()
+    order = Order.objects.filter(id=q).first()  
+    context = {'q_number': q, 'status': order.status}
     return render(request, 'test/index.html', context)

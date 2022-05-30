@@ -53,7 +53,7 @@ class Merchant(models.Model):
         ('PH', 'Closed for Public Holiday'),
         ('PERM', 'Permanently Closed'),
     ]
-    operation_status = models.CharField(max_length=255)
+    operation_status = models.CharField(max_length=255, default="TEMP")
     
     # TODO (1): ADD RATINGS AND CERTIFICATES (e.g. HALAL) 
     ##############################################################################
