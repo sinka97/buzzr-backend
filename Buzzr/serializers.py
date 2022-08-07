@@ -1,6 +1,7 @@
 from django.db.models.query import QuerySet
 from rest_framework import serializers
 from .models.user import User
+from .models.merchant import Merchant
 
 class UserDetailSerializer(serializers.ModelSerializer):
     class Meta:
@@ -22,3 +23,9 @@ class UserStateSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['state']
+        
+
+class MerchantSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Merchant
+        fields = '__all__'

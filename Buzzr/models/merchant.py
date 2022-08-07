@@ -10,7 +10,6 @@ from ..utils import get_current_datetime
 class Merchant(models.Model):
     id = models.BigAutoField(primary_key=True)
     uen = models.CharField(max_length=10)                                                               # Filled by Merchant
-    user_type = models.ForeignKey(User,on_delete=models.CASCADE)
     name = models.CharField(max_length=255)                                                             # Filled by Merchant (Shop name)
     country_code = models.IntegerField(blank=True,null=True)                                            # Filled by Merchant
     phone_number = models.CharField(max_length=255, blank=True, null=True)                              # Filled by Merchant
@@ -62,8 +61,8 @@ class Merchant(models.Model):
     def __str__(self):
         return "Merchant: " + str(self.name) + " located at " + str(self.address)
     
-    def save(self, *args, **kwargs):
-        self.address = f'#{self.unit} BLK {self.block} {self.street}, {self.postal_code}'
+    # def save(self, *args, **kwargs):
+    #     self.address = f'#{self.unit} BLK {self.block} {self.street}, {self.postal_code}'
         
 
 class MerchantSchedule(models.Model):

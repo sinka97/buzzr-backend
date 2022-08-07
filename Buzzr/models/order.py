@@ -7,11 +7,11 @@ from .customer import Customer
 
 class Order(models.Model):
     id = models.BigAutoField(primary_key=True)
-    customer = models.ForeignKey(Customer, on_delete=models.DO_NOTHING)
+    customer = models.ForeignKey(Customer, on_delete=models.DO_NOTHING,null=True)
     merchant = models.ForeignKey(Merchant, on_delete=models.DO_NOTHING)
     start_datetime = models.DateTimeField()
     end_datetime = models.DateTimeField(blank=True,null=True)
-    points = models.IntegerField()
+    points = models.IntegerField(null=True)
     
     WAIT = "Waiting"
     IN_QUEUE = "Queuing"
