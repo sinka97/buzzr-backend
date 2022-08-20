@@ -17,10 +17,15 @@ class Order(models.Model):
     IN_QUEUE = "Queuing"
     PREP = "Preparing"
     READY = "Ready"
+    CANCEL = "Cancel"
+    COMPLETE = "Complete"
+    
     STATUS_CHOICES = [
         (WAIT, f'Waiting for confirmation from {merchant}.'),
         (IN_QUEUE, 'Order placed.'),
         (PREP, 'Restaurant is preparing.'),
         (READY, 'Ready for collection.'),
+        (CANCEL, 'Order cancelled.'),
+        (COMPLETE,'Order completed.')
     ]
     status = models.CharField(max_length=50,choices=STATUS_CHOICES)
